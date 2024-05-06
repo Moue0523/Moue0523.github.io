@@ -12,7 +12,6 @@
       h4 {
         color: #A52A2A;
       }
-
       .tab {
         display: flex;
         flex-direction: row;
@@ -54,7 +53,7 @@
         width: 50%;
       }
       .tab_link.on:after {
-        width: 30%;
+        width: 50%;
       }
       .tab-body {
         position: relative;
@@ -71,7 +70,6 @@
       .tab-body_item.on {
         opacity: 1;
       }
-      
       .center {
         text-align: center;
       }
@@ -186,7 +184,7 @@
       </div>
     </div>
     <script>
-      document.addEventLestener('DOMContentLoaded', function () {
+      document.addEventListener('DOMContentLoaded', function () {
         var $tab_link = $('.tab_link')
         var $tab_body_item = $('tab-body_item')
         $tab_link.on('click', function (e) {
