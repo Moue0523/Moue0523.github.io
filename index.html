@@ -76,20 +76,6 @@
         text-align: center;
       }
     </style>
-    <script>
-      document.addEventLestener('DOMContentLoaded', function () {
-        var $tab_link = $('.tab_link')
-        var $tab_body_item = $('tab-body_item')
-        $tab_link.on('click', function (e) {
-          var target = $(e.currentTarget)
-          $tab_link.removeClass('on')
-          target.addClass('on')
-          var num = target.data('tab-body')
-          $tab_body_item.removeClass('on')
-          $('.tab-body_item--' + num).addClass('on')
-        })
-      })
-    </script>
   </head>
   <body>
     <div class="main">
@@ -199,5 +185,19 @@
         </ol>
       </div>
     </div>
+    <script>
+      document.addEventLestener('DOMContentLoaded', function () {
+        var $tab_link = $('.tab_link')
+        var $tab_body_item = $('tab-body_item')
+        $tab_link.on('click', function (e) {
+          var target = $(e.currentTarget)
+          $tab_link.removeClass('on')
+          target.addClass('on')
+          var num = target.data('tab-body')
+          $tab_body_item.removeClass('on')
+          $('.tab-body_item--' + num).addClass('on')
+        })
+      })
+    </script>
   </body>
 </html>
