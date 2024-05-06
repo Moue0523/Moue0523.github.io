@@ -12,63 +12,32 @@
       h4 {
         color: #A52A2A;
       }
-      .tab {
+
+      .tab-wrap {
         display: flex;
-        flex-direction: row;
-        text-align: center;
-        background-color: #fff !important;
-        margin: 0 !important;
+        flex-wrap: wrap;
       }
-      .tab__item {
-        flex: 1;
+      .tab-label {
+        color: White;
+        background: LightGray;
+        margin-right: 5px;
+        padding: 3px 12px;
+        order: -1;
       }
-      .tab__link {
-        position: relative;
-         display: block;
-        text-decoration: none;
-        color: #444;
-        cursor: pointer;
-      }
-      .tab__link:before {
-        content: ";
-        position: absolute;
-        bottom: 0;
-        right: 50%;
-        width: 0;
-        height: 2px;
-        background-color:#444;
-        transition: all 0.4s ease-out;
-      }
-      .tab__link:after {
-        content: ";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background-color:#444;
-        transition: all 0.4s ease-out;
-      }
-      .tab__link.on:before {
-        width: 50%;
-      }
-      .tab__link.on:after {
-        width: 50%;
-      }
-      .tab-body {
-        position: relative;
-        height: 120px;
-      }
-      .tab-body__item {
-        position: absolute;
+      .tab-content {
         width: 100%;
-        margin: 30px 15px;
-        text-align: center;
-        opacity: 0;
-        transition: all 0.6s ease-out;
+        display: none;
       }
-      .tab-body__item.on {
-        opacity: 1;
+/* アクティブなタブ */
+      .tab-switch:checked+.tab-label {
+        background: DeepSkyBlue;
+      }
+      .tab-switch:checked+.tab-label+.tab-content {
+        display: block;
+      }
+/* ラジオボタン非表示 */
+      .tab-switch {
+        display: none;
       }
       .center {
         text-align: center;
@@ -80,15 +49,9 @@
       <h1 class="center">Rena Moue</h1>
       <h4 class="center">Ph.D. Student at Tokyo University of Science, Japan</h4>
     </div>
-    <ul class="tab">
-      <li class="tab__item"><span class="tab__link on" data-tab-body="1">Home</span></li>
-      <li class="tab__item"><span class="tab__link" data-tab-body="2">Profile</span></li>
-      <li class="tab__item"><span class="tab__link" data-tab-body="3">Research</span></li>
-      <li class="tab__item"><span class="tab__link" data-tab-body="4">Achievement</span></li>
-    </ul>
-
-    <div class="tab-body">
-      <div class="tab-body__item tab-body__item--1 on">
+    <div class="tab-wrap">
+      <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">Home</label>
+      <div class="tab-content">
         <p class="center">
           <img src="udon1.jpg"width="70%"height="70%"/>
         </p>
@@ -104,9 +67,10 @@
         <h3>研究分野</h3>
         <p>表面物理学 / スピントロニクス</p>
       </div>
-      
-      <div class="tab-body__item tab-body__item--2 on">
-        <h2 id="profile">プロフィール</h2>
+
+      <input id="TAB-02" type="radio" name="TAB" class="tab-switch"/><label class="tab-label" for="TAB-02">Profile</label>
+      <div class="tab-content">
+        <h2>プロフィール</h2>
         <h3>略歴</h3>
         <ul>
           <li>
@@ -130,12 +94,14 @@
         </ul>
       </div>
       
-      <div class="tab-body__item tab-body__item--3 on">
-        <h2 id="research">研究</h2>
+      <input id="TAB-03" type="radio" name="TAB" class="tab-switch"/><label class="tab-label" for="TAB-03">Research</label>
+      <div class="tab-content">
+        <h2>研究</h2>
       </div>
 
-      <div class="tab-body__item tab-body__item--4 on">
-        <h2 id="achievement">業績</h2>
+      <input id="TAB-04" type="radio" name="TAB" class="tab-switch"/><label class="tab-label" for="TAB-04">Achievement</label>
+      <div class="tab-content">
+        <h2>業績</h2>
         <h3>査読付き論文</h3>
         <ol>
           <li>
@@ -183,19 +149,5 @@
         </ol>
       </div>
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var $tab__link = $('.tab__link')
-        var $tab_body_item = $('.tab-body__item')
-        $tab__link.on('click', function (e) {
-          var target = $(e.currentTarget)
-            $tab__link.removeClass('on')
-              target.addClass('on')
-                var num = target.data('tab-body')
-                  $tab_body_item.removeClass('on')
-                    $('.tab-body__item--' + num).addClass('on')
-        })
-      })
-    </script>
   </body>
 </html>
