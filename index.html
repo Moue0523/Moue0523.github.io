@@ -5,24 +5,28 @@
     
     <style>
 
-      .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
+      .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
             width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
         }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
         }
       
       .main {
@@ -72,32 +76,30 @@
   <body>
     <button onclick="alert('ボタンがクリックされました')">English</button>
 
-    <button id="myBtn">モーダルを開く</button>
-
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>ここにモーダルウィンドウの内容が表示されます。</p>
-  </div>
+    <h2>アコーディオンメニュー</h2>
+<button class="accordion">セクション1</button>
+<div class="panel">
+  <p>セクション1の内容です。詳細な情報がここに表示されます。</p>
+</div>
+<button class="accordion">セクション2</button>
+<div class="panel">
+  <p>セクション2の内容です。さらに詳細な情報がここに表示されます。</p>
 </div>
 
 <script>
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
+var acc = document.getElementsByClassName("accordion");
+var i;
 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
 }
 </script>
     
