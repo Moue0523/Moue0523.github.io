@@ -2,33 +2,17 @@
 <html>
   <head>
     <title>Rena Moue</title>
+     <link rel="stylesheet" href="style.css">
     
     <style>
-
-      .accordion {
-            background-color: #eee;
-            color: #444;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            transition: 0.4s;
-        }
-
-        .active, .accordion:hover {
-            background-color: #ccc;
-        }
-
-        .panel {
-            padding: 0 18px;
-            display: none;
-            background-color: white;
-            overflow: hidden;
-        }
-      
+      .btn {
+  border-radius: 5px;
+  background-color: lightblue;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
+     
       .main {
         background-color: #F5F5DC;
         line-height:5;
@@ -73,34 +57,7 @@
     </style>
   </head>
   <body>
-    <button onclick="alert('ボタンがクリックされました')">English</button>
-
-    <h2>アコーディオンメニュー</h2>
-<button class="accordion">セクション1</button>
-<div class="panel">
-  <p>セクション1の内容です。詳細な情報がここに表示されます。</p>
-</div>
-<button class="accordion">セクション2</button>
-<div class="panel">
-  <p>セクション2の内容です。さらに詳細な情報がここに表示されます。</p>
-</div>
-
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-</script>
+     <a href="sample.html" class="btn">サンプル</a>
     
     
     <div class="main">
